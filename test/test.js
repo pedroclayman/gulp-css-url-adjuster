@@ -1,7 +1,7 @@
-var gutil = require('gulp-util');
 var test = require('tap').test;
 var fs = require('fs');
 var path = require('path');
+var Vinyl = require('vinyl');
 
 var cssAdjuster = require('../index');
 
@@ -16,7 +16,7 @@ test('prepends url', function(t) {
     prepend: 'prepend/'
   });
 
-  stream.write(new gutil.File({
+  stream.write(new Vinyl({
     contents: read('test.css')
   }));
 
@@ -24,12 +24,12 @@ test('prepends url', function(t) {
     t.equal(file.contents.toString('utf8').trim(),
             read('expected-prepend.css').toString().trim(),
            'prepend');
+    stream.end();
+    t.end();
   });
 
-  stream.end();
 
-  t.end();
-  
+
 });
 
 test('appends url function', function(t) {
@@ -37,19 +37,16 @@ test('appends url function', function(t) {
     append: function(s) { return s + '?append'; }
   });
 
-  stream.write(new gutil.File({
+  stream.write(new Vinyl({
     contents: read('test.css')
   }));
 
   stream.once('data', function(file) {
     t.equal(file.contents.toString('utf8').trim(),
             read('expected-append.css').toString().trim());
+    stream.end();
+    t.end();
   });
-
-  stream.end();
-
-  t.end();
-  
 });
 
 test('appends url', function(t) {
@@ -57,19 +54,18 @@ test('appends url', function(t) {
     append: '?append'
   });
 
-  stream.write(new gutil.File({
+  stream.write(new Vinyl({
     contents: read('test.css')
   }));
 
   stream.once('data', function(file) {
     t.equal(file.contents.toString('utf8').trim(),
             read('expected-append.css').toString().trim());
+
+    stream.end();
+    t.end();
   });
 
-  stream.end();
-
-  t.end();
-  
 });
 
 test('appends and prepend url', function(t) {
@@ -78,19 +74,16 @@ test('appends and prepend url', function(t) {
     append: '?append'
   });
 
-  stream.write(new gutil.File({
+  stream.write(new Vinyl({
     contents: read('test.css')
   }));
 
   stream.once('data', function(file) {
     t.equal(file.contents.toString('utf8').trim(),
             read('expected-prepend-append.css').toString().trim());
+    stream.end();
+    t.end();
   });
-
-  stream.end();
-
-  t.end();
-  
 });
 
 test('prepends relative url', function(t) {
@@ -98,18 +91,16 @@ test('prepends relative url', function(t) {
     prependRelative: 'prepend/',
   });
 
-  stream.write(new gutil.File({
+  stream.write(new Vinyl({
     contents: read('test.css')
   }));
 
   stream.once('data', function(file) {
     t.equal(file.contents.toString('utf8').trim(),
             read('expected-relative-prepend.css').toString().trim());
+    stream.end();
+    t.end();
   });
-
-  stream.end();
-
-  t.end();
 });
 
 

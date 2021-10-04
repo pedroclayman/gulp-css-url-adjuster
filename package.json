@@ -1,35 +1,28 @@
 {
-  "name": "gulp-css-url-adjuster",
+  "name": "gulp-css-url-adjuster-no-gulp-util",
   "version": "0.2.3",
   "description": "Adjust urls inside css",
   "main": "index.js",
-
   "dependencies": {
     "rework": "~1.0.1",
     "rework-plugin-url": "~1.0.1",
     "through2": "~1.0.0",
-    "gulp-util": "latest"
+    "vinyl": "^2.2.1"
   },
-
   "devDependencies": {
     "tap": "latest"
   },
-
   "repository": {
     "type": "git",
-    "url": "git://github.com/casualrelaxation/gulp-css-url-adjuster.git"
+    "url": "git://github.com/pedroclayman/gulp-css-url-adjuster.git"
   },
-
   "keywords": [
     "gulpplugin",
     "css",
     "url",
     "image"
   ],
-
-  "author": "Trent <casualrelaxation@gmail.com>",
+  "author": "Peter Mihalik",
   "license": "MIT",
-  "homepage": "https://github.com/casualrelaxation/gulp-css-url-adjuster"
-
+  "homepage": "https://github.com/pedroclayman/gulp-css-url-adjuster"
 }
-

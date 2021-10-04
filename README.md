@@ -1,6 +1,11 @@
 gulp-css-url-adjuster
 =====================
 
+> ⚠️ **THIS IS A FORKED REPO**
+> The original repository is located here - https://github.com/trentearl/gulp-css-url-adjuster. 
+> The reason behind forking it was using `gulp-util` as dependency which was deprecated at the time
+> of creation and introduced a critical vulnerability (in its dependencies).
+
 ## Please consider using gulp-rework
 
 https://github.com/sindresorhus/gulp-rework
